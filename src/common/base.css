@@ -1,0 +1,28 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+html{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	background: rgb(233,233,233);
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.wrap{
+	width: 1000px;
+	margin: 0 auto;
+}
+.fixed{
+	overflow: hidden;
+}
+a{
+	text-decoration: none;
+}
+a:link,a:visited{color: #8e8e8e;}
+a:active,a:hover{color: #900;}
+input{outline: none;}

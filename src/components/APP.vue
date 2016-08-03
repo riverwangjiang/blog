@@ -5,8 +5,8 @@
             <router-view :items="artlist" class="article left"></router-view>
     		<div class="sider right">
     			<search></search>
-    			<art-type :items="artlist"></art-type>
-                <time-line :items="artlist"></time-line>
+    			<art-type></art-type>
+                <time-line></time-line>
     		</div>
         </div>
 </div>
@@ -50,6 +50,7 @@
                 vueThis.$http.post('http://localhost/options.php', {subType: subType, artTag: keyword}).then( (rep) =>{
                     if (rep.json() != 0) {
                         vueThis.artlist = rep.json();
+
                     } else {
                         swal('搜索结果为空', '请输入其它标题关键字', 'error');
                     }

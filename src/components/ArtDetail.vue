@@ -7,8 +7,7 @@
 				<a v-link="{path:'/edit/' + item.id}">编辑</a>
 			</div>
 		</div>
-		<div class="content">
-			{{item.content}}
+		<div class="content" v-html="item.content">
 		</div>
 	</div>
 </template>
@@ -41,5 +40,5 @@
 	.message{padding: 5px 8px;margin-bottom: 10px; border-bottom: 1px solid #ccc;}
 	h2{font-size: 28px;height: 40px;line-height: 40px;}
 	span{margin-right: 5px;}
-	.content{padding: 8px;}
+	.content{padding: 8px;word-wrap:break-word;}
 </style>

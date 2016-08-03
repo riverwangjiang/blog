@@ -5,7 +5,20 @@
 </template>
 <script>
 	export default{
-		props:['items'],
+		ready(){
+			let vm = this;
+			this.$http.post('http://localhost/options.php',{subType:'0'}).then((rep)=>{
+				vm.items = rep.json();
+			}, (rep)=>{
+				console.log('error');
+			})
+		},
+		data(){
+			
+			return{
+				items:[]
+			}
+		},
 		computed:{
 			tag(){
                 var arr = this.items;
@@ -23,6 +36,6 @@
 	}
 </script>
 <style scoped>
-	.types{height: 50px;padding:0 8px;border-bottom: 1px solid #ccc;border-top: 1px solid #ccc;}
-	.type{margin-right: 5px;line-height: 50px;}
+	.types{min-height:30px;padding:0 8px;border-bottom: 1px solid #ccc;border-top: 1px solid #ccc;}
+	.type{height: 30px;margin-right: 5px;line-height: 30px;display: inline-block;}
 </style>

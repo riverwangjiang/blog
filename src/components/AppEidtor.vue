@@ -4,7 +4,11 @@
 		<div class="blog-main wrap">
 			<input type="text" v-model='title' placeholder="文章标题...">
 	        <input type="text" v-model='tag' placeholder="文章标签...">
-	        <textarea autofocus id="inputter" v-model="content" placeholder="文章内容..."></textarea>
+	        <tool-bar></tool-bar>
+	        <div class="content fixed">
+	        <textarea class="left"autofocus id="inputter" v-model="content" placeholder="文章内容..."></textarea>
+	        <div class="left" id="outputter" v-html="content | markify"></div>
+	        </div>
 			<div class="right">
 				<button @click="submit">发表文章</button> 
 				<button @click="cancel">取消</button>
@@ -13,7 +17,14 @@
 	</div>
 </template>
 <script>
+	import Vue from 'vue'
+	import marked from '../common/marked'
 	import BlogHead from './BlogHead.vue'
+	import ToolBar from './ToolBar.vue'
+	Vue.filter('markify', function (val) {
+	  return marked(val);
+	})
+
 	export default{
 		data(){
 			return { 
@@ -25,7 +36,7 @@
 			}
 		},
 		components:{
-			BlogHead
+			BlogHead,ToolBar
 		},
 		route:{
 			data(){
@@ -64,11 +75,14 @@
 					subType = '2';
 					var alertWord = '修改成功';
 				}
+				function markedArt() {
+        			return marked(vm.content);
+      			}
 				vm.$http.post('http://localhost/options.php', {
 		        subType: subType,
 		        artTitle: vm.title,
 		        artTag: vm.tag,
-		        artContent: vm.content,
+		        artContent: markedArt(),
 		        artId: vm.id
 		      }).then((rep) =>{
 		          if(rep.data == 1) {
@@ -96,7 +110,10 @@
 	}
 </script>
 <style scoped>
-	textarea{resize: none;height:600px;outline: none;}
+	textarea{resize: none;height:500px;outline: none;width: 490px;border: none;padding: 5px;word-wrap:break-word;}
+	#outputter{height: 500px;width: 489px;background:white;border-left: 1px solid rgb(233,233,233);padding: 5px;word-wrap:break-word;overflow-y: auto;}
 	input{height: 20px}
-	input,textarea{width: 100%; margin-top: 10px;}
+	input{width: 100%; margin-top: 10px;}
+	button{cursor: pointer;padding:2px;}
+	.content{margin-bottom: 10px;}
 </style>

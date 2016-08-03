@@ -7,7 +7,7 @@
 				{{items[n].tag}}
 				</a>
 			</div>
-			<div class="line">{{items[n].content}}</div>
+			<div class="line" v-html="items[n].content"></div>
 			<div class="tool">
 				<a class="right" v-link="{path:'/search/time/' + items[n].time}">
 				{{items[n].time}}
@@ -57,5 +57,5 @@
 	.item{margin-bottom:20px;background: white;padding: 5px 8px;}
 	.title{font-size: 22px;font-weight: bold;}
 	.tool span,.tool a{margin-left: 20px;}
-	.line{height:38px;overflow: hidden;margin-bottom: 5px;}
+	.line{height:38px;overflow: hidden;margin-bottom: 5px;word-wrap:break-word;}
 </style>

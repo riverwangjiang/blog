@@ -26,7 +26,7 @@
             	document.title="查看博客";
                 var artId = this.$route.params.id;
                 var vueThis = this;
-                vueThis.$http.post('http://localhost/options.php', {subType: "4", artId: artId}).then((rep)=> {
+                vueThis.$http.post('/getData', {subType: "4", artId: artId}).then((rep)=> {
                     vueThis.item = rep.json()[0];
                 }, (rep)=> {
                     console.log('error');

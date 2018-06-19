@@ -44,7 +44,7 @@
 				let vueThis = this;
 				vueThis.editMode = vueThis.$route.params.mode;
 				if (vueThis.editMode!='new') {
-					vueThis.$http.post('http://localhost/options.php',{subType: "4", artId: vueThis.editMode}).then((rep)=>{
+					vueThis.$http.post('/getData',{subType: "4", artId: vueThis.editMode}).then((rep)=>{
 					let httpData = rep.json();
 					if (httpData) {
 						vueThis.title = httpData[0].title;
@@ -78,7 +78,7 @@
 				function markedArt() {
         			return marked(vm.content);
       			}
-				vm.$http.post('http://localhost/options.php', {
+				vm.$http.post('/getData', {
 		        subType: subType,
 		        artTitle: vm.title,
 		        artTag: vm.tag,

@@ -7,7 +7,7 @@
 	export default{
 		ready(){
 			let vm = this;
-			this.$http.post('http://localhost/options.php',{subType:'0'}).then((rep)=>{
+			this.$http.post('/getData',{subType:'0'}).then((rep)=>{
 				vm.items = rep.json();
 			}, (rep)=>{
 				console.log('error');

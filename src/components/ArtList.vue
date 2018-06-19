@@ -24,7 +24,7 @@
 		methods:{
 			deleteIt(id){
 				let vm = this;
-				vm.$http.post('http://localhost/options.php',{subType: '3',artId: id}).then((rep)=>{
+				vm.$http.post('/getData',{subType: '3',artId: id}).then((rep)=>{
 					if (rep.data==1) {
 						swal(
 			              {

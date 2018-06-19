@@ -47,7 +47,7 @@
 		methods: {
             filtBy(keyword, subType) {
                 var vueThis = this;
-                vueThis.$http.post('http://localhost/options.php', {subType: subType, artTag: keyword}).then( (rep) =>{
+                vueThis.$http.post('/getData', {subType: subType, artTag: keyword}).then( (rep) =>{
                     if (rep.json() != 0) {
                         vueThis.artlist = rep.json();
 
@@ -62,7 +62,7 @@
         events: {
             getList () {
                 var vueThis = this;
-                this.$http.post('http://localhost/options.php',{subType:'0'}).then((rep) =>{
+                this.$http.post('/getData',{subType:'0'}).then((rep) =>{
                  	vueThis.artlist = rep.json();
                 }, (rep) => {
                     swal("ERROR!", "", "error");

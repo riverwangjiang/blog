@@ -4,9 +4,11 @@
   "description": "blog",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node ./node_modules/webpack/bin/webpack.js --watch",
+    "build": "node ./node_modules/webpack/bin/webpack.js"
   },
-   "devDependencies": {
+  "devDependencies": {
     "jquery": "^1.12.4",
     "vue": "^1.0.0",
     "vue-router": "^0.7.13",
@@ -29,5 +31,9 @@
     "webpack": "^1.13.1"
   },
   "author": "wangjiang",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  }
 }

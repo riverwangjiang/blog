@@ -3,7 +3,7 @@ module.exports = {
   entry: './src/main.js',
   output: {
     path: './assets/',
-    publicPath: '/assets/',
+    publicPath: './assets/',
     filename: 'main.js'
   },
   watch: true,
